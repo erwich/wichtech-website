@@ -89,6 +89,7 @@ const theme = merge(tailwind, {
         p: {
           color: `text`,
           display: `inline`,
+          fontStyle: `italic`,
         }
       },
     },
