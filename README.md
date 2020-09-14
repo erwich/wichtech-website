@@ -1,6 +1,6 @@
 <p align="center">
-  <a href="https://themes.lekoarts.de">
-    <img alt="Gatsby Theme" src="https://img.lekoarts.de/gatsby/gatsby-themes-illustration.png" />
+  <a href="https://www.gatsbyjs.com/">
+    <img alt="Built with Gatsby" src="https://javascriptforwp.com/wp-content/uploads/2019/03/badge-gatsby.png" />
   </a>
 </p>
 <h1 align="center">
