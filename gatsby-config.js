@@ -35,6 +35,15 @@ module.exports = {
     `gatsby-plugin-theme-ui`,
     `gatsby-plugin-anchor-links`,
     `gatsby-plugin-catch-links`,
-    `gatsby-transformer-remark`
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: `gatsby-remark-highlight-code`
+          },
+        ],
+      },
+    },
   ].filter(Boolean),
 }

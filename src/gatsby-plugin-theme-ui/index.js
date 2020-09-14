@@ -37,6 +37,9 @@ const theme = merge(tailwind, {
       },
     },
   },
+  code: {
+    color: `text`,
+  },
   breakpoints: [`400px`, `600px`, `900px`, `1200px`, `1600px`],
   footer: {
     textAlign: `center`,
@@ -65,6 +68,28 @@ const theme = merge(tailwind, {
           color: `primary`,
           textDecoration: `none`,
         },
+      },
+      code: {
+        color: `text`,
+      },
+      blockquote: {
+        background: `bg-dark`,
+        borderLeft: `10px solid #ccc`,
+        margin: `1.5em 10px`,
+        padding: `0.5em 10px`,
+        quotes: `“`,
+        "::before": {
+          color: `text`,
+          content: `open-quote`,
+          fontSize: `4em`,
+          lineHeight: `0.1em`,
+          marginRight: `0.25em`,
+          verticalAlign: `-0.4em`,
+        },
+        p: {
+          color: `text`,
+          display: `inline`,
+        }
       },
     },
     p: {

@@ -1,22 +1,40 @@
 import React from "react"
 import { Helmet } from "react-helmet"
 import { graphql } from "gatsby"
-// import '../css/blog-post.css'; // make it pretty!
+import '../css/blog-post.css'; // make it pretty!
+
+import { Parallax } from "react-spring/renderprops-addons.cjs"
+import Layout from "../components/layout"
+
+import Navigation from "../components/navigation"
+import Inner from "../elements/inner"
+import Content from "../elements/content"
+
+import BlogPost from "../components/blog-post"
 
 export default function Template({
   data
 }) {
   const { markdownRemark: post } = data
+  const offset = 0
+  const factor = .5
   return (
     <div className="blog-post-container">
       <Helmet title={`Your Blog Name - ${post.frontmatter.title}`} />
-      <div className="blog-post">
-        <h1>{post.frontmatter.title}</h1>
-        <div
-          className="blog-post-content"
-          dangerouslySetInnerHTML={{ __html: post.html }}
-        />
-      </div>
+      <Layout>
+        <Parallax pages={1}>
+          <Navigation />
+          <Content speed={0.4} offset={offset} factor={factor}>
+            <Inner>
+              <BlogPost
+                title={ post.frontmatter.title }
+                content={ post.html }
+                date={ post.frontmatter.date }
+              />
+            </Inner>
+          </Content>
+        </Parallax>
+      </Layout>
     </div>
   )
 }
