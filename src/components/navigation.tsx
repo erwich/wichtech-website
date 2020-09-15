@@ -38,13 +38,13 @@ const Navigation = () => {
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
             <NavItem>
-              <NavLink href="/#about">Blog</NavLink>
+              <NavLink href="/blog">Blog</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="/#contact">Demos</NavLink>
+              <NavLink href="/contact">Contact</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="/#contact">GitHub</NavLink>
+              <NavLink href="#">GitHub</NavLink>
             </NavItem>
           </Nav>
           <NavbarText>
