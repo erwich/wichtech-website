@@ -16,7 +16,7 @@ export default function Template({
   data
 }) {
   const { markdownRemark: post } = data
-  const offset = 0
+  const offset = .1
   const factor = .5
   return (
     <div className="blog-post-container">
