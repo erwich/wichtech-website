@@ -3,37 +3,36 @@ import { Helmet } from "react-helmet"
 import { graphql } from "gatsby"
 import '../css/blog-post.css'; // make it pretty!
 
-import { Parallax } from "react-spring/renderprops-addons.cjs"
+import {
+  Container,
+  Row,
+  Col,
+} from "reactstrap"
+
 import Layout from "../components/layout"
-
 import Navigation from "../components/navigation"
-import Inner from "../elements/inner"
-import Content from "../elements/content"
-
 import BlogPost from "../components/blog-post"
 
 export default function Template({
   data
 }) {
   const { markdownRemark: post } = data
-  const offset = .4
-  const factor = .5
   return (
     <div className="blog-post-container">
       <Helmet title={`Your Blog Name - ${post.frontmatter.title}`} />
       <Layout>
-        <Parallax pages={2}>
-          <Navigation />
-          <Content speed={0.4} offset={offset} factor={factor}>
-            <Inner>
+        <Navigation />
+        <Container>
+          <Row>
+            <Col>
               <BlogPost
                 title={ post.frontmatter.title }
                 content={ post.html }
                 date={ post.frontmatter.date }
               />
-            </Inner>
-          </Content>
-        </Parallax>
+            </Col>
+          </Row>
+        </Container>
       </Layout>
     </div>
   )
