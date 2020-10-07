@@ -1,0 +1,9 @@
+version: "3"
+
+services:
+    wichtech-website:
+        image: nginx
+        ports:
+            - 9876:80
+        volumes:
+            - ./public:/usr/share/nginx/html
