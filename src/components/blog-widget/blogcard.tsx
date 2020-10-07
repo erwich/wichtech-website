@@ -29,4 +29,20 @@ const BlogCard = ({
   )
 }
 
-export default BlogCard
+const BlogCardTemp = ({
+  id,
+  title,
+  excerpt,
+  date,
+  path,
+}) => {
+  return (
+    <a 
+      href={ path }
+    >
+      { date } - { title }
+    </a>
+  )
+}
+
+export default BlogCardTemp
