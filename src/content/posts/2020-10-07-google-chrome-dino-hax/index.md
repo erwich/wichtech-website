@@ -60,7 +60,7 @@ so much as a scratch.
 ![UnstoppableDino](./unstoppabledino.PNG "Upstoppable Dino")
 
 ##### Breakdown of what we did
-So what did our little line of code actually do to the dino game to make our protaganist plow through those dastardly cacti? In short, we basically deleted 
+So what did our little line of code actually do to the dino game to make our protagonist plow through those dastardly cacti? In short, we basically deleted 
 the "Game Over" function. As it is originally intended, whenever the dino runs into a cactus, the ``Runner.instance_.gameOver()`` function is called. All of the 
 commands that are inside of that function are executed. Some things that would likely happen in that function are:
 * Stop the dino from moving
