@@ -6,7 +6,7 @@ title: "Google Chrome Dino Hax with JavaScript"
 
 #### What is the running dinosaur game, and how does it work?
 If you use Google Chrome for your web browsing needs, you've likely encountered the running dinosaur before, an Easter egg built into 
-the browser to make those excruciating moments (or hours, or days if you're extraordinarily unlucky) a little less unbearable. When 
+the browser to make those excruciating moments (or hours, or days if you're extraordinarily unlucky) without Internet a little less unbearable. When 
 Google Chrome detects that your computer's Internet connection has been disrupted, you'll see the below page, at which you can press the 
 spacebar to kick off a lightweight and admittedly addicting game. Alternatively, you can just type chrome://dino into the address bar of 
 Google Chrome if you want to get there _without_ shutting down your Internet connection.
