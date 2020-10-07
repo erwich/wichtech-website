@@ -16,13 +16,13 @@ export default function Template({
   data
 }) {
   const { markdownRemark: post } = data
-  const offset = .1
+  const offset = .4
   const factor = .5
   return (
     <div className="blog-post-container">
       <Helmet title={`Your Blog Name - ${post.frontmatter.title}`} />
       <Layout>
-        <Parallax pages={1}>
+        <Parallax pages={2}>
           <Navigation />
           <Content speed={0.4} offset={offset} factor={factor}>
             <Inner>

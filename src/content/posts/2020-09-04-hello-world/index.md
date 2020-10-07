@@ -13,3 +13,8 @@ function test() {
 
 ## Sample block quote
 > I'm saying something important!
+
+
+``This is test monospace``
+
+![Dino Hax](./dinohax.PNG "dinohax")

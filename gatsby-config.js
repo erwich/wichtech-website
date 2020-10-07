@@ -35,10 +35,16 @@ module.exports = {
     `gatsby-plugin-theme-ui`,
     `gatsby-plugin-anchor-links`,
     `gatsby-plugin-catch-links`,
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: { maxWidth: 1024 }
+          },
           {
             resolve: `gatsby-remark-highlight-code`
           },
