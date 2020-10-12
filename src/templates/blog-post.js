@@ -1,6 +1,10 @@
 import React from "react"
 import { Helmet } from "react-helmet"
 import { graphql } from "gatsby"
+import {
+  Disqus,
+  CommentCount
+} from "gatsby-plugin-disqus"
 import '../css/blog-post.css'; // make it pretty!
 
 import {
@@ -17,6 +21,11 @@ export default function Template({
   data
 }) {
   const { markdownRemark: post } = data
+  const disqusConfig = {
+    url: `https://wich.tech/${post.frontmatter.path}`,
+    identifier: post.id,
+    title: post.frontmatter.title,
+  }
   return (
     <div className="blog-post-container">
       <Helmet title={`Your Blog Name - ${post.frontmatter.title}`} />
@@ -30,6 +39,7 @@ export default function Template({
                 content={ post.html }
                 date={ post.frontmatter.date }
               />
+              <Disqus config={ disqusConfig } />
             </Col>
           </Row>
         </Container>

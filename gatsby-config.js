@@ -51,5 +51,24 @@ module.exports = {
         ],
       },
     },
+    {
+      resolve: `gatsby-plugin-disqus`,
+      options: {
+        shortname: `wichtech`
+      }
+    },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: "UA-180358086-1",
+        head: false,
+        exclude: [],
+        pageTransitionDelay: 0,
+        defer: false,
+        sampleRate: 5,
+        siteSpeedSampleRate: 10,
+        cookieDomain: "wich.tech",
+      },
+    }
   ].filter(Boolean),
 }
