@@ -20,19 +20,19 @@ const Navigation = () => {
   const [colorMode, setColorMode] = useColorMode()
 
   const toggle = () => setIsOpen(!isOpen)
-  const onThemeChange = () => setColorMode( colorMode == "light" ? "dark" : "light" )
+  const onThemeChange = () => setColorMode(colorMode == "light" ? "dark" : "light")
 
   const themeBtnColor = colorMode == "dark" ? "white" : "black"
 
   return (
     <div>
-        <Navbar 
-            className="bg-transparent" 
-            sticky="top"
-            light={ colorMode == "light" } 
-            dark={ colorMode == "dark" } 
-            expand="md"
-        >
+      <Navbar
+        className="bg-transparent"
+        sticky="top"
+        light={colorMode == "light"}
+        dark={colorMode == "dark"}
+        expand="md"
+      >
         <NavbarBrand href="/">@ewich</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
@@ -46,15 +46,18 @@ const Navigation = () => {
             <NavItem>
               <NavLink href="#">GitHub</NavLink>
             </NavItem>
+            <NavItem>
+              <NavLink href="/donate">Donate</NavLink>
+            </NavItem>
           </Nav>
           <NavbarText>
-              <Button 
-                className="bg-transparent"
-                style={{ color: themeBtnColor }}
-                onClick={ onThemeChange }
-              >
-                { colorMode == "dark" ? "Light Theme" : "Dark Theme" }
-              </Button>
+            <Button
+              className="bg-transparent"
+              style={{ color: themeBtnColor }}
+              onClick={onThemeChange}
+            >
+              {colorMode == "dark" ? "Light Theme" : "Dark Theme"}
+            </Button>
           </NavbarText>
         </Collapse>
       </Navbar>
