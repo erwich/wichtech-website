@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[8],{"0Aie":function(t,a,e){"use strict";e.r(a);e("q1tI");var n=e("rIun"),c=e("9Dj+"),u=e("9Wgw"),l=e("p1lA"),o=e("qKvR");a.default=function(){return Object(o.d)(c.a,null,Object(o.d)(n.Parallax,{pages:1},Object(o.d)(l.a,null),Object(o.d)(u.a,{offset:0,factor:1})))}}}]);
+//# sourceMappingURL=component---src-pages-contact-tsx-b64045030c2c30d1d02e.js.map
