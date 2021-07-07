@@ -1,5 +1,4 @@
 module.exports = {
-  pathPrefix: `/wichtech-website`,
   siteMetadata: {
     siteTitle: `Eric Wich`,
     siteTitleAlt: `Eric Wich - Code. Play. Live.`,
