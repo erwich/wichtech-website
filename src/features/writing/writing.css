@@ -48,3 +48,13 @@
     font-size: 29px;
   }
 }
+
+.reading .prose h2 {
+  margin: 48px 0 20px;
+  padding-top: 24px;
+  border-top: 1px solid var(--edge);
+  font-size: clamp(25px, 3.5vw, 32px);
+  letter-spacing: -0.6px;
+  line-height: 1.25;
+  scroll-margin-top: 24px;
+}
