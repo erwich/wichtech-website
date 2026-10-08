@@ -1,0 +1,127 @@
+---
+import './analytics.css';
+const measurementId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID || '';
+const enabled =
+  import.meta.env.SITE_PREVIEW !== 'true' &&
+  /^G-[A-Z0-9]+$/.test(measurementId);
+---
+
+{enabled && (
+  <div data-analytics-id={measurementId}>
+    <button class="analytics-settings" type="button" data-analytics-settings>
+      Analytics preferences
+    </button>
+    <aside
+      class="analytics-choice"
+      data-analytics-choice
+      hidden
+      aria-label="Analytics preferences"
+    >
+      <p>
+        May I use Google Analytics to understand which pages people visit? It
+        uses cookies. Your contact messages stay out of analytics.
+      </p>
+      <div>
+        <button type="button" class="button secondary" data-analytics-decline>
+          No thanks
+        </button>
+        <button type="button" class="button" data-analytics-allow>
+          Allow analytics
+        </button>
+      </div>
+    </aside>
+  </div>
+)}
+<script>
+  import { pageDetails } from './pageview.mjs';
+  const preferenceKey = 'wich-analytics-consent';
+  let choice = '';
+  try {
+    choice = localStorage.getItem(preferenceKey) || '';
+  } catch {}
+  let started = false;
+  let lastPage = '';
+  let previousPage = document.referrer;
+  let pageReady = false;
+  type AnalyticsWindow = Window & {
+    dataLayer?: unknown[];
+    gtag?: (...args: unknown[]) => void;
+  };
+  const analyticsWindow = window as AnalyticsWindow;
+  function track(id: string) {
+    if (choice !== 'granted' || !pageReady) return;
+    if (!started) {
+      analyticsWindow.dataLayer = analyticsWindow.dataLayer || [];
+      analyticsWindow.gtag = function () {
+        analyticsWindow.dataLayer!.push(arguments);
+      };
+      analyticsWindow.gtag('consent', 'default', {
+        analytics_storage: 'granted',
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+      });
+      analyticsWindow.gtag('js', new Date());
+      analyticsWindow.gtag('config', id, {
+        ...pageDetails(location.href, document.title, previousPage),
+        send_page_view: false,
+        allow_google_signals: false,
+        allow_ad_personalization_signals: false,
+      });
+      const script = document.createElement('script');
+      script.async = true;
+      script.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(id)}`;
+      document.head.append(script);
+      started = true;
+    }
+    const details = pageDetails(location.href, document.title, previousPage);
+    if (lastPage === details.page_location) return;
+    analyticsWindow.gtag!('set', details);
+    analyticsWindow.gtag!('event', 'page_view', details);
+    previousPage = details.page_location;
+    lastPage = details.page_location;
+  }
+  function setup() {
+    const root = document.querySelector<HTMLElement>('[data-analytics-id]');
+    if (!root) return;
+    const id = root.dataset.analyticsId!;
+    const panel = root.querySelector<HTMLElement>('[data-analytics-choice]')!;
+    panel.hidden = choice !== '';
+    root.querySelector<HTMLButtonElement>(
+      '[data-analytics-settings]',
+    )!.onclick = () => {
+      panel.hidden = false;
+    };
+    const save = (value: string) => {
+      choice = value;
+      try {
+        localStorage.setItem(preferenceKey, value);
+      } catch {}
+      panel.hidden = true;
+      if (value === 'granted') track(id);
+      else if (started) {
+        // Reload without the Google tag after withdrawing consent.
+        analyticsWindow.gtag!('consent', 'update', {
+          analytics_storage: 'denied',
+        });
+        for (const cookie of document.cookie.split(';')) {
+          const name = cookie.trim().split('=')[0];
+          if (!/^_ga(?:_|$)/.test(name)) continue;
+          for (const domain of ['', location.hostname, '.wich.tech']) {
+            document.cookie = `${name}=; Max-Age=0; Path=/;${domain ? ` Domain=${domain};` : ''} SameSite=Lax`;
+          }
+        }
+        location.reload();
+      }
+    };
+    root.querySelector<HTMLButtonElement>('[data-analytics-allow]')!.onclick =
+      () => save('granted');
+    root.querySelector<HTMLButtonElement>('[data-analytics-decline]')!.onclick =
+      () => save('denied');
+    track(id);
+  }
+  document.addEventListener('astro:page-load', () => {
+    pageReady = true;
+    setup();
+  });
+</script>
