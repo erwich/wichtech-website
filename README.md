@@ -38,14 +38,14 @@ Remove `draft: true` to publish on the next deployment. Future-dated posts remai
 
 ## Cloudflare deployment
 
-The output is static HTML and assets; no database or Worker runtime script is required. `wrangler.jsonc` points to `dist`. Run a build before a manual deploy. GitHub Actions owns CI/CD; leave Cloudflare Workers Builds automatic deployment disconnected.
+The site is static HTML and assets; `wrangler.jsonc` points to `dist` and owns the www route. A separate small Worker redirects the bare domain to www. Run a build before a manual deploy. GitHub Actions owns CI/CD; leave Cloudflare Workers Builds automatic deployment disconnected.
 
 1. Authenticate the official Wrangler CLI locally. Keep tokens and authorization codes out of chat and Git. Prefer OS-keychain storage.
 2. Add GitHub Actions secrets `CLOUDFLARE_API_TOKEN` (scoped to the intended account's Workers deployment) and `CLOUDFLARE_ACCOUNT_ID` through your trusted secret-management flow.
-3. Run the workflow manually with target `preview` to deploy `wichtech-website-preview`. Preview builds are marked noindex and cannot submit contact messages.
+3. Run the workflow manually with target `preview` to deploy `wichtech-website-preview`. Preview builds are marked noindex and cannot submit contact messages. For local preview deployments use `SITE_PREVIEW=true npm run build` followed by `npx wrangler deploy --config wrangler.preview.jsonc`.
 4. Configure contact delivery as below, verify the preview and intended account, then enable repository variable `CLOUDFLARE_DEPLOY_ENABLED=true`. Merges to `master` then deploy production. A manual production run is also supported from `master`.
-5. Bind `www.wich.tech` to the production Worker only after review. Inspect DNS and preserve mail records. Decide whether the apex redirects to www. No DNS changes are automated by this repository.
-6. Verify HTTPS, the old article URL, redirects, genuine 404s, social previews, contact delivery, and mobile navigation. Retain the GitHub Pages deployment until cutover is verified.
+5. Production routes are declared for `www.wich.tech/*` and `wich.tech/*`. `npm run deploy` deploys both Workers. Existing proxied DNS records remain; see [launch notes](docs/launch.md) for recovery and eventual custom-domain cleanup.
+6. Verify HTTPS, the Revelation article, redirects, genuine 404s, social previews, contact delivery, and mobile navigation. Keep the historical GitHub Pages deployment available for recovery.
 
 Account authentication, CI secrets, domain bindings, and email delivery are external setup requirements, not established merely by this configuration.
 

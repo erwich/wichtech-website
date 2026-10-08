@@ -1,0 +1,7 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "wichtech-redirect",
+  "main": "src/features/routing/apex-redirect.ts",
+  "compatibility_date": "2026-10-07",
+  "routes": [{ "pattern": "wich.tech/*", "zone_name": "wich.tech" }]
+}
