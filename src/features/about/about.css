@@ -23,12 +23,6 @@
   color: var(--muted);
 }
 
-.interests li:before {
-  content: '↗';
-  margin-right: 12px;
-  color: var(--accent);
-}
-
 @media (max-width: 720px) {
   .interests {
     padding-left: 24px;
