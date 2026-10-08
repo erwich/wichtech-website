@@ -2,6 +2,11 @@ export const contactEndpoint = 'https://api.web3forms.com/submit';
 
 /** Provider-specific response handling. Never treat HTTP success alone as delivery. */
 export async function submitContact(formData, request = fetch) {
+  if (!String(formData.get('h-captcha-response') || '').trim()) {
+    throw new Error(
+      'Please complete the verification checkbox before sending.',
+    );
+  }
   const response = await request(contactEndpoint, {
     method: 'POST',
     body: formData,

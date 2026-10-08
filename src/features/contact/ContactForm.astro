@@ -60,6 +60,15 @@ const enabled =
       disabled={!enabled}
     ></textarea>
   </label>
+  {enabled && (
+    <div class="contact-verification">
+      <p>One quick check before you send.</p>
+      <div data-contact-captcha></div>
+      <p data-captcha-status role="status" aria-live="polite">
+        Loading verification…
+      </p>
+    </div>
+  )}
   <p class="form-note">
     Your name, email, and message are sent through Web3Forms so I can reply.
   </p>
@@ -76,10 +85,15 @@ const enabled =
       'The form is not connected yet. In the meantime, explore my projects or find me on GitHub.'}
   </p>
   <noscript>
-    {enabled && <p>Submitting this form takes you to our message provider.</p>}
+    {enabled && (
+      <p>
+        Please enable JavaScript to complete verification and send your message.
+      </p>
+    )}
   </noscript>
 </form>
 <script>
+  import { mountCaptcha } from './providers/hcaptcha';
   import { submitContact } from './providers/web3forms.mjs';
   function setupContact() {
     const form = document.querySelector<HTMLFormElement>('#contact-form');
@@ -91,15 +105,37 @@ const enabled =
       '[data-submit-label]',
     )!;
     const status = form.querySelector<HTMLParagraphElement>('#contact-status')!;
+    const captcha = form.querySelector<HTMLElement>('[data-contact-captcha]')!;
+    const captchaStatus = form.querySelector<HTMLElement>(
+      '[data-captcha-status]',
+    )!;
+    let resetCaptcha: (() => void) | undefined;
+    void mountCaptcha(captcha, (message) => {
+      captchaStatus.textContent = message;
+    })
+      .then((reset) => {
+        resetCaptcha = reset;
+        captchaStatus.textContent = '';
+      })
+      .catch((error) => {
+        captchaStatus.textContent = error.message;
+      });
     form.onsubmit = async (event) => {
       event.preventDefault();
       if (button.disabled || !form.reportValidity()) return;
+      const data = new FormData(form);
+      if (!String(data.get('h-captcha-response') || '').trim()) {
+        status.textContent =
+          'Please complete the verification checkbox before sending.';
+        status.dataset.error = 'true';
+        return;
+      }
       button.disabled = true;
       buttonLabel.textContent = 'Sending…';
       status.textContent = '';
       status.removeAttribute('data-error');
       try {
-        await submitContact(new FormData(form));
+        await submitContact(data);
         form.reset();
         status.textContent = 'Thanks! Your message was sent.';
       } catch (error) {
@@ -109,6 +145,7 @@ const enabled =
             : 'Your message could not be sent. Please try again.';
         status.dataset.error = 'true';
       } finally {
+        resetCaptcha?.();
         button.disabled = false;
         buttonLabel.textContent = 'Send message';
       }

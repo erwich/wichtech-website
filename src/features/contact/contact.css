@@ -146,3 +146,12 @@
     transform: translateY(-48px);
   }
 }
+
+.contact-verification p {
+  font-size: 13px;
+  color: var(--muted);
+  margin: 0 0 10px;
+}
+.contact-verification [data-captcha-status]:empty {
+  display: none;
+}
