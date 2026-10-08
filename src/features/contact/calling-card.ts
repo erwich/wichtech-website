@@ -7,7 +7,7 @@ export const callingCard = {
   url: `${site.url}/contact/#card`,
   website: site.url,
   github: site.github,
-  linkedin: '',
+  linkedin: 'https://www.linkedin.com/in/eric-wich-b327b978/',
 };
 
 export function contactFile() {

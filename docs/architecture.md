@@ -28,4 +28,4 @@ Contact stays visibly unavailable until a recipient form key is configured. The 
 
 ## Calling card
 
-The contact feature owns its card component, sharing controls, vCard, and QR generator. Thin static endpoints emit the vCard and SVG at build time; no QR service or client-side generator is involved. Both point to the canonical contact page. The contact file intentionally excludes phone and email. The headshot is shared with About. Web Share is progressive enhancement, with copy-link and manual-copy fallback. LinkedIn awaits the user-provided URL.
+The contact feature owns its card component, sharing controls, vCard, and QR generator. Thin static endpoints emit the vCard and SVG at build time; no QR service or client-side generator is involved. Both point to the canonical contact page. The contact file intentionally excludes phone and email. The headshot is shared with About. Web Share is progressive enhancement, with copy-link and manual-copy fallback. LinkedIn links to Eric’s supplied public profile.
