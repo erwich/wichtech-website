@@ -50,7 +50,7 @@ const enabled =
     />
   </label>
   <label>
-    What's on your mind?
+    Message
     <textarea
       name="message"
       required
@@ -69,7 +69,7 @@ const enabled =
   </div>
   <p id="contact-status" role="status" aria-live="polite">
     {!enabled &&
-      'The form is not connected yet. You can find my public projects on GitHub below.'}
+      'The form is not connected yet. In the meantime, explore my projects or find me on GitHub.'}
   </p>
   <noscript>
     {enabled && <p>Submitting this form takes you to our message provider.</p>}

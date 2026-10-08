@@ -5,3 +5,6 @@
   Permissions-Policy: camera=(), microphone=(), geolocation=()
 /_astro/*
   Cache-Control: public, max-age=31536000, immutable
+/contact/eric-wich.vcf
+  Content-Type: text/vcard; charset=utf-8
+  Content-Disposition: attachment; filename="eric-wich.vcf"

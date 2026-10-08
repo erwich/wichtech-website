@@ -1,0 +1,132 @@
+---
+import { Image } from 'astro:assets';
+import headshot from '../../shared/images/eric-headshot.jpg';
+import { callingCard } from './calling-card';
+---
+
+<aside class="calling-card" id="card" aria-labelledby="card-name">
+  <div class="card-topline">
+    <span class="card-monogram" aria-hidden="true">
+      EW<span>_</span>
+    </span>
+    <span>PERSON / BUILDER / EXPLORER</span>
+  </div>
+  <div class="card-identity">
+    <Image
+      src={headshot}
+      alt=""
+      width={96}
+      height={96}
+      widths={[96, 192]}
+      sizes="96px"
+      loading="eager"
+    />
+    <div>
+      <h2 id="card-name">{callingCard.name}</h2>
+      <p>{callingCard.tagline}</p>
+    </div>
+  </div>
+  <div class="card-links" aria-label="Eric’s public profiles">
+    {callingCard.linkedin && (
+      <a href={callingCard.linkedin} target="_blank" rel="noopener noreferrer">
+        LinkedIn ↗
+      </a>
+    )}
+    <a href={callingCard.github} target="_blank" rel="noopener noreferrer">
+      GitHub ↗
+    </a>
+    <a href="/projects/">Projects ↗</a>
+    <a href="#message">Send a note ↓</a>
+  </div>
+  <div class="card-qr">
+    <a
+      href="/contact/card-qr.svg"
+      download="eric-wich-qr.svg"
+      aria-label="Download Eric’s calling card QR code"
+    >
+      <img
+        src="/contact/card-qr.svg"
+        alt="QR code opening Eric Wich’s contact page"
+        width="152"
+        height="152"
+      />
+    </a>
+    <div>
+      <h3>Take this with you.</h3>
+      <p>Scan to open my card on your phone.</p>
+      <a
+        class="text-link"
+        href="/contact/card-qr.svg"
+        download="eric-wich-qr.svg"
+      >
+        Download QR ↗
+      </a>
+    </div>
+  </div>
+  <div class="card-actions">
+    <a class="button" href="/contact/eric-wich.vcf" download="eric-wich.vcf">
+      Save contact ↓
+    </a>
+    <button
+      class="button secondary"
+      id="share-card"
+      type="button"
+      hidden
+      data-url={callingCard.url}
+    >
+      Share card ↗
+    </button>
+    <button
+      class="text-link copy-card"
+      id="copy-card"
+      type="button"
+      hidden
+      data-url={callingCard.url}
+    >
+      Copy link
+    </button>
+  </div>
+  <p class="card-note">A name and a place to reconnect.</p>
+  <p class="card-status" id="card-status" role="status" aria-live="polite"></p>
+  <label class="card-manual-copy" id="card-manual-copy" hidden>
+    Copy this link
+    <input readonly value={callingCard.url} />
+  </label>
+</aside>
+<script>
+  function setupCard() {
+    const share = document.querySelector<HTMLButtonElement>('#share-card');
+    const copy = document.querySelector<HTMLButtonElement>('#copy-card');
+    const status = document.querySelector<HTMLElement>('#card-status');
+    const manual = document.querySelector<HTMLElement>('#card-manual-copy');
+    if (!share || !copy || !status || !manual) return;
+    const url = share.dataset.url!;
+    async function copyLink() {
+      try {
+        await navigator.clipboard.writeText(url);
+        status!.textContent = 'Card link copied.';
+        manual!.hidden = true;
+      } catch {
+        status!.textContent = 'Select and copy the link below.';
+        manual!.hidden = false;
+        const input = manual!.querySelector('input');
+        input?.focus();
+        input?.select();
+      }
+    }
+    copy.hidden = false;
+    copy.onclick = copyLink;
+    if (typeof navigator.share === 'function') {
+      share.hidden = false;
+      share.onclick = async () => {
+        try {
+          await navigator.share({ title: 'Eric Wich', url });
+        } catch (error) {
+          if (!(error instanceof DOMException && error.name === 'AbortError'))
+            await copyLink();
+        }
+      };
+    }
+  }
+  document.addEventListener('astro:page-load', setupCard);
+</script>
