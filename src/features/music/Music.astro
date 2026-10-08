@@ -1,0 +1,52 @@
+---
+import SectionHeading from '../../shared/components/SectionHeading.astro';
+import { recordings, soundcloudProfile } from './recordings';
+import './music.css';
+---
+
+<section class="music-section" aria-label="Music recordings">
+  <p class="eyebrow">Away from the keyboard. Mostly.</p>
+  <SectionHeading
+    title="A different kind of composition"
+    href={soundcloudProfile}
+    linkLabel="More on SoundCloud"
+  />
+  <p class="music-intro">
+    I’m a cellist, too. Sometimes that means picking up a guitar, layering a few
+    parts, and making something with a friend. These are a couple of recordings
+    I’m proud of.
+  </p>
+  <div class="recordings">
+    {recordings.map((recording, index) => (
+      <article class="recording">
+        <div class="recording-heading">
+          <span class="recording-number" aria-hidden="true">
+            0{index + 1}
+          </span>
+          <div>
+            <p class="eyebrow">{recording.subtitle}</p>
+            <h3>{recording.title}</h3>
+          </div>
+        </div>
+        <p class="recording-description">{recording.description}</p>
+        <dl class="recording-credits">
+          <div>
+            <dt>Me</dt>
+            <dd>{recording.mine}</dd>
+          </div>
+          <div>
+            <dt>A friend</dt>
+            <dd>{recording.together}</dd>
+          </div>
+        </dl>
+        <a
+          class="text-link"
+          href={recording.url}
+          aria-label={`Listen to ${recording.title} on SoundCloud`}
+        >
+          Listen on SoundCloud
+        </a>
+      </article>
+    ))}
+  </div>
+</section>

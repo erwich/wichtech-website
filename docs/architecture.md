@@ -7,6 +7,7 @@ Astro builds HTML at build time. Cloudflare Workers Static Assets serves the out
 - `src/features/home`: homepage introduction and composition.
 - `src/features/projects`: project Markdown, schema, query, card, grid, detail view.
 - `src/features/writing`: article Markdown/images, schema, public-content filtering, journal and article views, RSS support.
+- `src/features/music`: featured recordings, instrument credits, and SoundCloud links.
 - `src/features/about`: biographical copy and interests.
 - `src/features/contact`: form, interaction state, Web3Forms adapter.
 - `src/shared`: site settings, shell, metadata, navigation, theme, buttons, section headings, and common prose styles.

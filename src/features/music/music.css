@@ -1,0 +1,75 @@
+.music-section {
+  margin-top: 48px;
+  padding-top: 36px;
+  border-top: 1px solid var(--edge);
+}
+
+.music-intro {
+  max-width: 640px;
+  margin: 0 0 28px;
+}
+
+.recordings {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 32px;
+}
+
+.recording {
+  padding: 24px 0 0;
+  border-top: 2px solid var(--accent);
+}
+
+.recording-heading {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.recording-number {
+  font: 34px/1 var(--mono);
+  color: var(--accent);
+  opacity: 0.7;
+}
+
+.recording-heading .eyebrow {
+  margin-bottom: 5px;
+  font-size: 10px;
+}
+
+.recording h3 {
+  margin: 0;
+  font-size: 26px;
+}
+
+.recording-description {
+  font-size: 14px;
+  margin: 18px 0;
+}
+
+.recording-credits {
+  display: grid;
+  gap: 6px;
+  margin: 0 0 20px;
+  font-size: 13px;
+}
+
+.recording-credits div {
+  display: grid;
+  grid-template-columns: 70px 1fr;
+  gap: 12px;
+}
+
+.recording-credits dt {
+  color: var(--muted);
+}
+
+.recording-credits dd {
+  margin: 0;
+}
+
+@media (max-width: 520px) {
+  .recordings {
+    grid-template-columns: 1fr;
+  }
+}

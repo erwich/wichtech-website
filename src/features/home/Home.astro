@@ -7,6 +7,7 @@ import { getProjects } from '../projects/query';
 import Journal from '../writing/Journal.astro';
 import { getPublishedPosts } from '../writing/query';
 import Interests from '../about/Interests.astro';
+import Music from '../music/Music.astro';
 const projects = (await getProjects()).filter(
   (project) => project.data.featured,
 );
@@ -52,6 +53,7 @@ const posts = (await getPublishedPosts()).slice(0, 3);
     <Interests />
   </div>
 </section>
+<Music />
 <section class="hello">
   <div>
     <h2>Have something in mind?</h2>
