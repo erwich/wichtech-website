@@ -1,0 +1,44 @@
+#contact-form {
+  display: grid;
+  gap: 19px;
+  max-width: 550px;
+}
+
+#contact-form label {
+  display: grid;
+  gap: 8px;
+  font-size: 14px;
+}
+
+#contact-form input,
+#contact-form textarea {
+  width: 100%;
+  padding: 13px;
+  background: var(--panel);
+  color: var(--ink);
+  border: 1px solid var(--edge);
+  border-radius: 3px;
+}
+
+#contact-form textarea {
+  min-height: 160px;
+  resize: vertical;
+}
+
+#contact-form .form-note,
+#contact-status {
+  font-size: 13px;
+  margin: 0;
+}
+
+#contact-status[data-error] {
+  color: var(--error);
+}
+
+#contact-form .honeypot {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}

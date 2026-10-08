@@ -1,0 +1,22 @@
+---
+import SiteLayout from '../shared/layouts/SiteLayout.astro';
+import ContactForm from '../features/contact/ContactForm.astro';
+---
+
+<SiteLayout
+  title="Contact"
+  description="Have a project in mind, a question, or a shared interest? Say hello to Eric Wich."
+>
+  <section class="page">
+    <p class="eyebrow">Say hello</p>
+    <h1>
+      Good things start
+      <br />
+      with a conversation.
+    </h1>
+    <p class="intro">
+      Have a project in mind, a question, or a shared interest?
+    </p>
+    <ContactForm />
+  </section>
+</SiteLayout>

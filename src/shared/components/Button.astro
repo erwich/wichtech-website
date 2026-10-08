@@ -1,0 +1,17 @@
+---
+interface Props {
+  href: string;
+  secondary?: boolean;
+  external?: boolean;
+}
+const { href, secondary = false, external = false } = Astro.props;
+---
+
+<a
+  class:list={['button', { secondary }]}
+  href={href}
+  target={external ? '_blank' : undefined}
+  rel={external ? 'noopener noreferrer' : undefined}
+>
+  <slot />
+</a>

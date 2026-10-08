@@ -1,0 +1,22 @@
+---
+import { navigation } from '../site';
+import ThemeToggle from './ThemeToggle.astro';
+const pathname = Astro.url.pathname;
+---
+
+<header class="site-header">
+  <a class="brand" href="/" aria-label="Eric Wich home">
+    wich.tech<span> / </span>
+  </a>
+  <nav aria-label="Main navigation">
+    {navigation.map((link) => (
+      <a
+        href={link.href}
+        aria-current={pathname.startsWith(link.href) ? 'page' : undefined}
+      >
+        {link.label}
+      </a>
+    ))}
+  </nav>
+  <ThemeToggle />
+</header>

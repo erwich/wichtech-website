@@ -1,0 +1,41 @@
+---
+import './writing.css';
+import type { CollectionEntry } from 'astro:content';
+import { formatDate, postUrl } from './query';
+interface Props {
+  posts: CollectionEntry<'posts'>[];
+}
+const { posts } = Astro.props;
+const [lead, ...rest] = posts;
+---
+
+<div class="journal-stories">
+  {lead ? (
+    <>
+      <article class="lead-story">
+        <p class="eyebrow">
+          {lead.data.category} · {formatDate(lead.data.date)}
+        </p>
+        <h3>
+          <a href={postUrl(lead.data.slug)}>{lead.data.title}</a>
+        </h3>
+        <p>{lead.data.description}</p>
+        <a class="text-link" href={postUrl(lead.data.slug)}>
+          Read the story ↗
+        </a>
+      </article>
+      {rest.map((post) => (
+        <article class="story-row">
+          <p class="eyebrow">
+            {post.data.category} · {formatDate(post.data.date)}
+          </p>
+          <h3>
+            <a href={postUrl(post.data.slug)}>{post.data.title} ↗</a>
+          </h3>
+        </article>
+      ))}
+    </>
+  ) : (
+    <p>New notes are on their way.</p>
+  )}
+</div>

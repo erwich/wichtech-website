@@ -1,0 +1,104 @@
+---
+import './contact.css';
+const enabled =
+  import.meta.env.SITE_PREVIEW !== 'true' &&
+  Boolean(import.meta.env.PUBLIC_WEB3FORMS_KEY);
+---
+
+<form id="contact-form" data-enabled={enabled ? 'true' : 'false'}>
+  {enabled && (
+    <input
+      type="hidden"
+      name="access_key"
+      value={import.meta.env.PUBLIC_WEB3FORMS_KEY}
+    />
+  )}
+  <input type="hidden" name="subject" value="A message from wich.tech" />
+  <input type="hidden" name="from_name" value="Wich Tech contact form" />
+  <div class="honeypot" aria-hidden="true">
+    <label>
+      Leave this blank
+      <input name="botcheck" type="checkbox" tabindex="-1" />
+    </label>
+  </div>
+  <label>
+    Your name
+    <input
+      name="name"
+      autocomplete="name"
+      required
+      maxlength="120"
+      disabled={!enabled}
+    />
+  </label>
+  <label>
+    Email
+    <input
+      name="email"
+      type="email"
+      autocomplete="email"
+      required
+      maxlength="254"
+      disabled={!enabled}
+    />
+  </label>
+  <label>
+    What's on your mind?
+    <textarea
+      name="message"
+      required
+      minlength="10"
+      maxlength="10000"
+      disabled={!enabled}
+    ></textarea>
+  </label>
+  <p class="form-note">
+    Your name, email, and message are sent through Web3Forms so I can reply.
+  </p>
+  <div>
+    <button class="button" type="submit" disabled={!enabled}>
+      {enabled ? 'Send message ↗' : 'Contact form coming soon'}
+    </button>
+  </div>
+  <p id="contact-status" role="status" aria-live="polite">
+    {!enabled &&
+      'The form is not connected yet. You can find my public projects on GitHub below.'}
+  </p>
+  <noscript>
+    <p>This form needs JavaScript to send your message.</p>
+  </noscript>
+</form>
+<script>
+  import { submitContact } from './providers/web3forms.mjs';
+  function setupContact() {
+    const form = document.querySelector<HTMLFormElement>('#contact-form');
+    if (!form || form.dataset.enabled !== 'true') return;
+    const button = form.querySelector<HTMLButtonElement>(
+      'button[type="submit"]',
+    )!;
+    const status = form.querySelector<HTMLParagraphElement>('#contact-status')!;
+    form.onsubmit = async (event) => {
+      event.preventDefault();
+      if (button.disabled || !form.reportValidity()) return;
+      button.disabled = true;
+      button.textContent = 'Sending…';
+      status.textContent = '';
+      status.removeAttribute('data-error');
+      try {
+        await submitContact(new FormData(form));
+        form.reset();
+        status.textContent = 'Thanks! Your message was sent.';
+      } catch (error) {
+        status.textContent =
+          error instanceof Error
+            ? error.message
+            : 'Your message could not be sent. Please try again.';
+        status.dataset.error = 'true';
+      } finally {
+        button.disabled = false;
+        button.textContent = 'Send message ↗';
+      }
+    };
+  }
+  document.addEventListener('astro:page-load', setupContact);
+</script>

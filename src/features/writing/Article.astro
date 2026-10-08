@@ -1,0 +1,36 @@
+---
+import './writing.css';
+import { render, type CollectionEntry } from 'astro:content';
+import { formatDate } from './query';
+interface Props {
+  post: CollectionEntry<'posts'>;
+}
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<section class="page">
+  <a class="text-link" href="/writing/">
+    ← Back to writing
+  </a>
+  <article class="reading">
+    <p class="eyebrow">{post.data.category}</p>
+    <h1>{post.data.title}</h1>
+    <p class="deck">{post.data.description}</p>
+    <div class="byline">
+      Eric Wich <span>/</span>{' '}
+      <time datetime={post.data.date.toISOString()}>
+        {formatDate(post.data.date)}
+      </time>
+    </div>
+    {post.data.archived && (
+      <p class="archive-note">
+        From the archive. This post is preserved from the original site; browser
+        interfaces and APIs may have changed since publication.
+      </p>
+    )}
+    <div class="prose">
+      <Content />
+    </div>
+  </article>
+</section>

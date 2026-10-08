@@ -1,0 +1,28 @@
+---
+import SiteLayout from '../../shared/layouts/SiteLayout.astro';
+import Journal from '../../features/writing/Journal.astro';
+import { getPublishedPosts } from '../../features/writing/query';
+import Interests from '../../features/about/Interests.astro';
+const posts = await getPublishedPosts();
+---
+
+<SiteLayout
+  title="Writing"
+  description="Engineering, AI, and occasional detours. Notes from a curious life."
+>
+  <section class="page">
+    <p class="eyebrow">The journal</p>
+    <h1>
+      Notes from
+      <br />a curious life.
+    </h1>
+    <p class="intro">
+      Engineering, AI, and occasional detours. Room for a deep dive and a
+      thought that doesn't need a diagram.
+    </p>
+    <div class="editorial-grid">
+      <Journal posts={posts} />
+      <Interests />
+    </div>
+  </section>
+</SiteLayout>
