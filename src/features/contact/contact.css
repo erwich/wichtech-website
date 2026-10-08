@@ -140,3 +140,9 @@
     font-size: 26px;
   }
 }
+
+@media (min-width: 851px) {
+  .calling-card {
+    transform: translateY(-48px);
+  }
+}
