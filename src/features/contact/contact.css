@@ -70,9 +70,6 @@
   font: bold 26px var(--mono);
   color: var(--ink);
 }
-.card-monogram span {
-  color: var(--accent);
-}
 .card-identity {
   display: flex;
   align-items: center;
