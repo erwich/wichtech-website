@@ -3,7 +3,7 @@
   "name": "wichtech-website",
   "compatibility_date": "2026-10-07",
   "routes": [
-    { "pattern": "www.wich.tech/*", "zone_name": "wich.tech" },
+    { "pattern": "www.wich.tech", "custom_domain": true },
   ],
   "assets": {
     "directory": "./dist",

@@ -20,7 +20,7 @@ Feature collections are registered in Astro's required content config. This is c
 
 GitHub Actions validates pull requests. A manual preview workflow builds and deploys to a separate preview Worker, with no contact key and no search indexing. Production deploys on master only when the repository variable CLOUDFLARE_DEPLOY_ENABLED is true; this gate avoids switching infrastructure before account setup is reviewed. Actions uses CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID secrets. The public contact key is a repository variable.
 
-Do not simultaneously enable Workers Builds automatic deployment. The old gh-pages branch remains historical and serves the existing site until cutover. Production uses the existing proxied www hostname with a Worker route. A separate routing feature redirects the apex hostname to www. Preview uses its own route-free Wrangler configuration. See launch.md for recovery and the remaining DNS cleanup.
+Do not simultaneously enable Workers Builds automatic deployment. The old gh-pages branch remains historical. Production uses a Workers Custom Domain for www.wich.tech. A separate Worker on the wich.tech Custom Domain redirects the apex hostname to www. Cloudflare manages both DNS records, with no GitHub Pages origin. Preview uses its own route-free Wrangler configuration. See launch.md for recovery.
 
 ## Content
 
