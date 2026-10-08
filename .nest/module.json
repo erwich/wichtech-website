@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "id": "wichtech-website",
+  "packs": [
+    "home-foundation"
+  ],
+  "context": [
+    "docs/maintenance.md"
+  ],
+  "skills": []
+}
