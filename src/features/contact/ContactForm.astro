@@ -1,11 +1,18 @@
 ---
 import './contact.css';
+import { contactEndpoint } from './providers/web3forms.mjs';
 const enabled =
   import.meta.env.SITE_PREVIEW !== 'true' &&
   Boolean(import.meta.env.PUBLIC_WEB3FORMS_KEY);
 ---
 
-<form id="contact-form" data-enabled={enabled ? 'true' : 'false'}>
+<form
+  id="contact-form"
+  method="POST"
+  action={enabled ? contactEndpoint : undefined}
+  data-astro-reload
+  data-enabled={enabled ? 'true' : 'false'}
+>
   {enabled && (
     <input
       type="hidden"
@@ -65,7 +72,7 @@ const enabled =
       'The form is not connected yet. You can find my public projects on GitHub below.'}
   </p>
   <noscript>
-    <p>This form needs JavaScript to send your message.</p>
+    {enabled && <p>Submitting this form takes you to our message provider.</p>}
   </noscript>
 </form>
 <script>

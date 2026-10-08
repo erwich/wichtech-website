@@ -64,6 +64,7 @@ test('all built local links and image sources resolve', async () => {
 });
 test('the contact form cannot send without configured delivery', async () => {
   const page = await html('contact/index.html');
+  assert.match(page, /method="POST"/);
   if (
     process.env.SITE_PREVIEW === 'true' ||
     !process.env.PUBLIC_WEB3FORMS_KEY
