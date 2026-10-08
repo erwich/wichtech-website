@@ -52,7 +52,7 @@ export async function mountCaptcha(
   const id = api.render(container, {
     sitekey,
     theme: document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light',
-    size: 'compact',
+    size: container.clientWidth < 304 ? 'compact' : 'normal',
     callback: () => report(''),
     'expired-callback': () =>
       report('Verification expired. Please complete it again before sending.'),
