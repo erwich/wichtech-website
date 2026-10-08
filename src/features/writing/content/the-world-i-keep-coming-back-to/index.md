@@ -87,6 +87,14 @@ One part handles what we call flavors: bits of atmospheric text that can make th
 
 I like being able to actually look through the results. You can see what’s there, rather than having to wander around hoping the right bit of text happens to appear while you’re testing.
 
+And here’s what it feels like from inside the game. I’m walking through the temple, moving from a sanctuary to a room with three statues, then stopping to look more closely at one of them. There’s a whole extra description waiting there. A little later, an atmospheric message rolls through about echoes, distant water, and ancient leaves.
+
+![Mudlet gameplay showing a sanctuary, movement into a room with three statues, a detailed statue examination, and an atmospheric message.](./temple-gameplay.png)
+
+*Walking through the temple, stopping to examine a statue, and letting the world carry on around you.*
+
+Those layers are a big part of what I love about MUDs. You get a sense of the room when you arrive, but you can slow down and explore the details. The writing gives you something to picture, and those little moments of activity help make it feel like a place.
+
 ### Yes, even the cookies have a system
 
 Then there are dynamic replica pools. This is a pretty direct result of the lesson with the spoon.
@@ -102,6 +110,14 @@ That screen lets us choose the allowed templates and how many variations to keep
 ![Generated cookie variants showing their descriptions, aliases, and shared cookie base template.](./dynamic-replicas.jpg)
 
 *Different cookies, all built from the approved cookie template.*
+
+Of course, I had to actually go shopping. Here’s the player’s side of that system: a snack stall with a handful of different cookies, each priced in sterling. I type `buy cookie`, and because there are several possible matches, the game asks which one I mean and gives me a numbered list.
+
+![Mudlet gameplay showing cookie varieties for sale, a numbered choice after buying a cookie, payment of 150 sterling, and eating the selected cinnamon-swirled honey cookie.](./cookie-shop-gameplay.png)
+
+*The other side of the replica pool: browsing, buying, and eating a cinnamon-swirled honey cookie.*
+
+I pick the cinnamon-swirled honey cookie, hand over 150 sterling, and eat it. That little exchange makes me happy. The variations have made it all the way into something a player can choose, pay for, and consume. The shop resolves which item I want, the currency changes hands, and the cookie gets its very brief moment in the world.
 
 The part I care about underneath all this is that generating a definition doesn’t put an item into the world. Our Lua scripts decide when to spawn one. They take a ready-made definition from the pool, and the engine queues a refill in the background. An empty pool can return immediately instead of making the game wait for an AI response.
 
