@@ -7,7 +7,7 @@ Astro builds HTML at build time. Cloudflare Workers Static Assets serves the out
 - `src/features/home`: homepage introduction and composition.
 - `src/features/projects`: project Markdown, schema, query, card, grid, detail view.
 - `src/features/writing`: article Markdown/images, schema, public-content filtering, journal and article views, RSS support.
-- `src/features/analytics`: opt-in GA4 page views, preference controls, and URL sanitization.
+- `src/features/analytics`: GA4 page views, preference controls, and URL sanitization.
 - `src/features/music`: featured recordings, instrument credits, and SoundCloud links.
 - `src/features/about`: biographical copy and interests.
 - `src/features/contact`: form, interaction state, Web3Forms adapter.
@@ -34,4 +34,4 @@ The contact feature owns its compact profile card and Web3Forms form. The headsh
 
 ## Analytics
 
-Production uses PUBLIC_GA_MEASUREMENT_ID. The Google tag loads only after a visitor opts in; the footer lets them change that preference. Ads features remain disabled. Page views are sent explicitly after Astro page navigation, with query strings and fragments removed. Keep enhanced measurement disabled on the Wich Tech Website stream to avoid duplicate page views and automatic form tracking. Preview never renders the analytics controls or enables collection.
+Production uses PUBLIC_GA_MEASUREMENT_ID. Analytics starts by default without an automatic prompt, as requested by Eric. The footer opens preferences for opting out; existing opt-outs remain respected. This is a global default, with no regional detection. Ads features remain disabled. Page views are sent explicitly after Astro page navigation, with query strings and fragments removed. Keep enhanced measurement disabled on the Wich Tech Website stream to avoid duplicate page views and automatic form tracking. Preview never renders the analytics controls or enables collection.

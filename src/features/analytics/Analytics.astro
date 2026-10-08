@@ -18,12 +18,13 @@ const enabled =
       aria-label="Analytics preferences"
     >
       <p>
-        May I use Google Analytics to understand which pages people visit? It
-        uses cookies. Your contact messages stay out of analytics.
+        Google Analytics helps me understand which pages people visit. It uses
+        cookies. You can turn it off here. Your contact messages stay out of
+        analytics.
       </p>
       <div>
         <button type="button" class="button secondary" data-analytics-decline>
-          No thanks
+          Turn off analytics
         </button>
         <button type="button" class="button" data-analytics-allow>
           Allow analytics
@@ -35,9 +36,9 @@ const enabled =
 <script>
   import { pageDetails } from './pageview.mjs';
   const preferenceKey = 'wich-analytics-consent';
-  let choice = '';
+  let choice = 'granted';
   try {
-    choice = localStorage.getItem(preferenceKey) || '';
+    choice = localStorage.getItem(preferenceKey) || 'granted';
   } catch {}
   let started = false;
   let lastPage = '';
@@ -86,7 +87,7 @@ const enabled =
     if (!root) return;
     const id = root.dataset.analyticsId!;
     const panel = root.querySelector<HTMLElement>('[data-analytics-choice]')!;
-    panel.hidden = choice !== '';
+    panel.hidden = true;
     root.querySelector<HTMLButtonElement>(
       '[data-analytics-settings]',
     )!.onclick = () => {
