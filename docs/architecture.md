@@ -26,6 +26,6 @@ Collection schemas validate metadata at build time. Draft and future-dated artic
 
 Contact stays visibly unavailable until a recipient form key is configured. The key is a public identifier, not a server secret. Preview builds never inject it. Success appears only after an explicit successful provider response; network/provider errors keep the message and offer retry. Provider delivery and spam protection require verification before launch.
 
-## Calling card
+## Contact profile
 
-The contact feature owns its card component, sharing controls, vCard, and QR generator. Thin static endpoints emit the vCard and SVG at build time; no QR service or client-side generator is involved. Both point to the canonical contact page. The contact file intentionally excludes phone and email. The headshot is shared with About. Web Share is progressive enhancement, with copy-link and manual-copy fallback. LinkedIn links to Eric’s supplied public profile.
+The contact feature owns its compact profile card and Web3Forms form. The headshot is shared with About. LinkedIn links to Eric’s supplied public profile. The former QR, vCard, and sharing controls have been removed.
