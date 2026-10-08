@@ -10,4 +10,4 @@ Build production assets without SITE_PREVIEW, then run npm run deploy. This depl
 
 Recovery: the gh-pages branch and original GitHub Pages configuration are preserved. Removing the two Worker routes returns traffic to the original proxied origin. Previous Worker deployments also provide asset rollback. An archive of origin/gh-pages was prepared locally before cutover.
 
-CI still needs a dedicated Cloudflare API token. Until configured, use the authenticated local Wrangler CLI and leave the GitHub production gate disabled. Contact delivery remains unconfigured and the site shows that state explicitly.
+CI still needs a dedicated Cloudflare API token. Until configured, use the authenticated local Wrangler CLI and leave the GitHub production gate disabled. Web3Forms is configured through the ignored local .env and the PUBLIC_WEB3FORMS_KEY GitHub repository variable. The production form is enabled; recipient inbox delivery still needs an end-to-end submission check. Preview deliberately keeps delivery disabled.

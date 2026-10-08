@@ -64,5 +64,10 @@ test('the contact form cannot send without configured delivery', async () => {
     assert.match(page, /data-enabled="false"/);
     assert.match(page, /Contact form coming soon/);
     assert.doesNotMatch(page, /name="access_key"/);
+  } else {
+    assert.match(page, /data-enabled="true"/);
+    assert.match(page, /name="access_key"/);
+    assert.match(page, /action="https:\/\/api.web3forms.com\/submit"/);
+    assert.doesNotMatch(page, /Contact form coming soon/);
   }
 });
