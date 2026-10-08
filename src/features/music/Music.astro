@@ -12,9 +12,9 @@ import './music.css';
     linkLabel="More on SoundCloud"
   />
   <p class="music-intro">
-    I’m a cellist, too. Sometimes that means picking up a guitar, layering a few
-    parts, and making something with a friend. These are a couple of recordings
-    I’m proud of.
+    Cello was my first love, but my love of strings doesn’t stop there. Guitar,
+    bass, and other stringed instruments are just as much a part of how I make
+    music. Here are a couple of collaborations I’m proud of.
   </p>
   <div class="recordings">
     {recordings.map((recording, index) => (
@@ -29,16 +29,6 @@ import './music.css';
           </div>
         </div>
         <p class="recording-description">{recording.description}</p>
-        <dl class="recording-credits">
-          <div>
-            <dt>Me</dt>
-            <dd>{recording.mine}</dd>
-          </div>
-          <div>
-            <dt>A friend</dt>
-            <dd>{recording.together}</dd>
-          </div>
-        </dl>
         <a
           class="text-link"
           href={recording.url}

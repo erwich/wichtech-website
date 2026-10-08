@@ -5,18 +5,14 @@ export const recordings = [
     title: 'Creep',
     subtitle: 'Radiohead cover',
     description:
-      'A familiar song, with a different voice. My cello alongside a friend on keyboard.',
-    mine: 'Cello',
-    together: 'Keyboard',
+      'A cello-and-keyboard take on Radiohead’s Creep. I play cello, with a friend bringing the keyboard part.',
     url: 'https://soundcloud.com/eric-wich/creep-cover',
   },
   {
     title: 'Your Love',
-    subtitle: 'Cello, strings & drums',
+    subtitle: 'Cello, guitar, bass & drums',
     description:
-      'A few more instruments on this one: I play cello, guitar, and bass, with a friend on drums.',
-    mine: 'Cello, guitar & bass',
-    together: 'Drums',
+      'I recorded the cello, guitar, and bass parts for this collaboration, joined by a friend on drums.',
     url: 'https://soundcloud.com/eric-wich/your-love',
   },
 ];
