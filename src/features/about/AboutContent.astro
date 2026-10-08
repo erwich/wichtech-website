@@ -1,28 +1,75 @@
 ---
+import { Image } from 'astro:assets';
 import Button from '../../shared/components/Button.astro';
-import Interests from './Interests.astro';
+import headshot from './images/eric-headshot.jpg';
+import selfie from './images/eric-and-wife.jpg';
+import './about.css';
 ---
 
-<section class="page">
+<section class="page about-page">
   <p class="eyebrow">The person behind the projects</p>
   <h1>Hi, I'm Eric.</h1>
-  <div class="editorial-grid">
+  <div class="about-section">
     <div class="prose">
-      <p>
-        I'm a systems architect with nine years of software development
-        experience before moving into architecture.
+      <p class="about-lead">
+        I’m a software developer with a soft spot for ambitious ideas and the
+        question, “Could we build that?”
       </p>
       <p>
-        I like ambitious ideas, clear boundaries, and finding a first version
-        that people can actually use. A lot of that curiosity finds its way into
-        AI and the tools we use to build things together.
+        I like the whole process: talking an idea through, figuring out how the
+        pieces fit, and getting something into someone’s hands. I care about
+        what it feels like to use just as much as how it works underneath.
       </p>
       <p>
-        Outside of software, I'm a husband, father, and worship leader. Music,
-        good stories, and a meal shared with others all have a place here.
+        That curiosity takes me from game worlds to AI experiments to little
+        tools that make everyday life easier. I’m especially interested in
+        software that works well with people—something useful, a little
+        expressive, and worth coming back to.
+      </p>
+      <p>
+        This is where I share some of those ideas as they take shape. You’ll
+        find <a href="/projects/">things I’m building</a>,
+        <a href="/writing/">notes from along the way</a>, and the occasional
+        side quest that turns into a project of its own.
+      </p>
+    </div>
+    <figure class="about-photo">
+      <Image
+        src={headshot}
+        alt="Eric Wich"
+        widths={[320, 640, 960]}
+        sizes="(max-width: 720px) 100vw, 360px"
+        loading="eager"
+      />
+    </figure>
+  </div>
+  <div class="about-section about-personal">
+    <figure class="about-photo">
+      <Image
+        src={selfie}
+        alt="Eric and his wife smiling together outdoors"
+        widths={[320, 640, 960]}
+        sizes="(max-width: 720px) 100vw, 360px"
+      />
+      <figcaption>With my wife, away from the keyboard.</figcaption>
+    </figure>
+    <div class="prose">
+      <h2>There’s more to the story.</h2>
+      <p>
+        I’m also a husband, father, and worship leader. Family, music, and faith
+        are part of my life, alongside RPGs, good stories, and something good on
+        the grill.
+      </p>
+      <p>
+        This site gives all of that a little room. Some days I’ll write about
+        software or share something I’m building. Other days, it might be an
+        idea I’m still working through or something that caught my interest.
+      </p>
+      <p>
+        If we share an interest, you have something you’d like to build, or you
+        just want to say hello, I’d like to hear from you.
       </p>
       <Button href="/contact/">Say hello ↗</Button>
     </div>
-    <Interests />
   </div>
 </section>

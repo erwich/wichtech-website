@@ -42,3 +42,51 @@
     padding: 25px 0 0;
   }
 }
+
+.about-section {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  gap: clamp(28px, 5vw, 64px);
+  align-items: start;
+  margin-top: 36px;
+}
+
+.about-photo {
+  margin: 0;
+}
+
+.about-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  border: 1px solid var(--edge);
+}
+
+.about-photo figcaption {
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.about-personal {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr);
+  border-top: 1px solid var(--edge);
+  padding-top: 48px;
+  margin-top: 48px;
+}
+
+.about-lead {
+  font-size: 1.15em;
+}
+
+@media (max-width: 720px) {
+  .about-section {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .about-photo {
+    width: min(100%, 420px);
+    justify-self: center;
+  }
+}

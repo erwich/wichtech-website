@@ -22,6 +22,6 @@ Do not simultaneously enable Workers Builds automatic deployment. The old gh-pag
 
 ## Content
 
-Collection schemas validate metadata at build time. Draft and future-dated articles are filtered at the shared feature query used by pages, cards, and RSS. Stable slugs define URLs. The archived article keeps /google-chrome-dino-hax; /blog redirects to /writing. Retirement of /plex, /donate, and /test1 is intentional; they receive a real 404 rather than an unrelated destination.
+Collection schemas validate metadata at build time. Draft and future-dated articles are filtered at the shared feature query used by pages, cards, and RSS. Stable slugs define URLs. The old Chrome dinosaur article and its images are retired; its URL returns 404. /blog redirects to /writing. Retirement of /plex, /donate, and /test1 is intentional; they receive a real 404 rather than an unrelated destination.
 
 Contact stays visibly unavailable until a recipient form key is configured. The key is a public identifier, not a server secret. Preview builds never inject it. Success appears only after an explicit successful provider response; network/provider errors keep the message and offer retry. Provider delivery and spam protection require verification before launch.

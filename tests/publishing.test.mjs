@@ -8,7 +8,6 @@ test('drafts and future posts never enter public indexes', () => {
   assert.equal(isPublished({ date: '2026-10-07', draft: false }, now), true);
   assert.equal(isPublished({ date: 'invalid', draft: false }, now), false);
 });
-test('migration keeps the original article permalink', () => {
-  assert.equal(postUrl('google-chrome-dino-hax'), '/google-chrome-dino-hax/');
+test('posts use the writing route', () => {
   assert.equal(postUrl('a-new-post'), '/writing/a-new-post/');
 });

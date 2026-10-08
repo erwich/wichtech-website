@@ -4,12 +4,10 @@ import SiteLayout from '../../shared/layouts/SiteLayout.astro';
 import Article from '../../features/writing/Article.astro';
 import { getPublishedPosts } from '../../features/writing/query';
 export const getStaticPaths = (async () =>
-  (await getPublishedPosts())
-    .filter((post) => post.data.slug !== 'google-chrome-dino-hax')
-    .map((post) => ({
-      params: { slug: post.data.slug },
-      props: { post },
-    }))) satisfies GetStaticPaths;
+  (await getPublishedPosts()).map((post) => ({
+    params: { slug: post.data.slug },
+    props: { post },
+  }))) satisfies GetStaticPaths;
 const { post } = Astro.props;
 ---
 

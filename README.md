@@ -34,7 +34,7 @@ draft: true
 ---
 ```
 
-Remove `draft: true` to publish on the next deployment. Future-dated posts remain excluded until a build occurs after their publication date. Pages and RSS use the same visibility rules. The migrated dinosaur post retains its original address.
+Remove `draft: true` to publish on the next deployment. Future-dated posts remain excluded until a build occurs after their publication date. Pages and RSS use the same visibility rules.
 
 ## Cloudflare deployment
 

@@ -12,7 +12,6 @@ test('launch pages and migration assets exist', async () => {
     'projects/revelation/index.html',
     'projects/serenity-hobbies/index.html',
     'writing/index.html',
-    'google-chrome-dino-hax/index.html',
     '404.html',
     'rss.xml',
     'robots.txt',
@@ -26,13 +25,6 @@ test('launch pages and migration assets exist', async () => {
   assert.doesNotMatch(
     home,
     /Here&#39;s Jesus|Sample topic|Good architecture should/,
-  );
-  const article = await html('google-chrome-dino-hax/index.html');
-  assert.match(article, /From the archive/);
-  assert.match(article, /property="og:type" content="article"/);
-  assert.match(
-    article,
-    /rel="canonical" href="https:\/\/www.wich.tech\/google-chrome-dino-hax\/?"/,
   );
 });
 test('all built local links and image sources resolve', async () => {
