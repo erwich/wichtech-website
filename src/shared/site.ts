@@ -11,5 +11,5 @@ export const navigation = [
   { href: '/projects/', label: 'Projects' },
   { href: '/writing/', label: 'Writing' },
   { href: '/about/', label: 'About' },
-  { href: '/contact/', label: 'Say hello ↗' },
+  { href: '/contact/', label: 'Say hello' },
 ];

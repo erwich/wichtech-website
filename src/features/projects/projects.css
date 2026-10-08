@@ -29,7 +29,9 @@
   margin-bottom: 12px;
 }
 
-.project-card h3 span {
+.project-card-arrow {
+  display: inline-flex;
+  align-items: center;
   color: var(--accent);
   font-weight: 400;
 }

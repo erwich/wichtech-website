@@ -1,4 +1,5 @@
 ---
+import ArrowIcon from './ArrowIcon.astro';
 interface Props {
   href: string;
   secondary?: boolean;
@@ -14,4 +15,5 @@ const { href, secondary = false, external = false } = Astro.props;
   rel={external ? 'noopener noreferrer' : undefined}
 >
   <slot />
+  <ArrowIcon />
 </a>

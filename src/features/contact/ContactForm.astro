@@ -1,5 +1,6 @@
 ---
 import './contact.css';
+import ArrowIcon from '../../shared/components/ArrowIcon.astro';
 import { contactEndpoint } from './providers/web3forms.mjs';
 const enabled =
   import.meta.env.SITE_PREVIEW !== 'true' &&
@@ -64,7 +65,10 @@ const enabled =
   </p>
   <div>
     <button class="button" type="submit" disabled={!enabled}>
-      {enabled ? 'Send message ↗' : 'Contact form coming soon'}
+      <span data-submit-label>
+        {enabled ? 'Send message' : 'Contact form coming soon'}
+      </span>
+      {enabled && <ArrowIcon />}
     </button>
   </div>
   <p id="contact-status" role="status" aria-live="polite">
@@ -83,12 +87,15 @@ const enabled =
     const button = form.querySelector<HTMLButtonElement>(
       'button[type="submit"]',
     )!;
+    const buttonLabel = button.querySelector<HTMLSpanElement>(
+      '[data-submit-label]',
+    )!;
     const status = form.querySelector<HTMLParagraphElement>('#contact-status')!;
     form.onsubmit = async (event) => {
       event.preventDefault();
       if (button.disabled || !form.reportValidity()) return;
       button.disabled = true;
-      button.textContent = 'Sending…';
+      buttonLabel.textContent = 'Sending…';
       status.textContent = '';
       status.removeAttribute('data-error');
       try {
@@ -103,7 +110,7 @@ const enabled =
         status.dataset.error = 'true';
       } finally {
         button.disabled = false;
-        button.textContent = 'Send message ↗';
+        buttonLabel.textContent = 'Send message';
       }
     };
   }
