@@ -1,0 +1,29 @@
+---
+import ContactForm from './ContactForm.astro';
+import CallingCard from './CallingCard.astro';
+import './contact.css';
+---
+
+<section class="page contact-page">
+  <p class="eyebrow">Say hello</p>
+  <h1>
+    Good things start
+    <br />
+    with a conversation.
+  </h1>
+  <p class="intro">
+    An idea to build, a shared curiosity, or just a hello. I’d like to hear it.
+  </p>
+  <div class="contact-grid">
+    <CallingCard />
+    <section
+      class="contact-message"
+      id="message"
+      aria-labelledby="message-heading"
+    >
+      <h2 id="message-heading">What’s on your mind?</h2>
+      <p>Leave a note and a way to reply.</p>
+      <ContactForm />
+    </section>
+  </div>
+</section>

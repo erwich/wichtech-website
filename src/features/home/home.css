@@ -1,0 +1,62 @@
+.hero {
+  padding: 64px 0 56px;
+  background: radial-gradient(
+    ellipse at 100% 25%,
+    color-mix(in srgb, var(--accent) 8%, transparent),
+    transparent 58%
+  );
+}
+
+.hero h1 em {
+  font-weight: 400;
+  color: var(--accent);
+}
+
+.hero-copy {
+  max-width: 510px;
+  margin-top: 25px;
+}
+
+.journal-section {
+  margin-top: 52px;
+  padding-top: 36px;
+  border-top: 1px solid var(--edge);
+}
+
+.hello {
+  display: flex;
+  justify-content: space-between;
+  gap: 25px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 48px;
+  padding-top: 35px;
+  border-top: 1px solid var(--edge);
+}
+
+.hello h2 {
+  font-size: 24px;
+  margin-bottom: 9px;
+}
+
+.hello p {
+  font-size: 14px;
+  margin: 0;
+}
+
+@media (max-width: 720px) {
+  .hero {
+    padding: 44px 0;
+  }
+  .hero h1 {
+    font-size: 57px;
+    letter-spacing: -2.5px;
+  }
+}
+
+@media (max-width: 520px) {
+  .hero h1 {
+    font-size: clamp(40px, 10.8vw, 48px);
+    letter-spacing: -2px;
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "wichtech-website",
+  "compatibility_date": "2026-10-07",
+  "routes": [
+    { "pattern": "www.wich.tech/*", "zone_name": "wich.tech" },
+  ],
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "404-page",
+  },
+}

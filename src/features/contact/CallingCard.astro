@@ -1,0 +1,39 @@
+---
+import { Image } from 'astro:assets';
+import headshot from '../../shared/images/eric-headshot.jpg';
+import { callingCard } from './calling-card';
+---
+
+<aside class="calling-card" id="card" aria-labelledby="card-name">
+  <div class="card-topline">
+    <span class="card-monogram">@erwich</span>
+    <span>PERSON / BUILDER / EXPLORER</span>
+  </div>
+  <div class="card-identity">
+    <Image
+      src={headshot}
+      alt=""
+      width={96}
+      height={96}
+      widths={[96, 192]}
+      sizes="96px"
+      loading="eager"
+    />
+    <div>
+      <h2 id="card-name">{callingCard.name}</h2>
+      <p>{callingCard.tagline}</p>
+    </div>
+  </div>
+  <div class="card-links" aria-label="Eric’s public profiles">
+    {callingCard.linkedin && (
+      <a href={callingCard.linkedin} target="_blank" rel="noopener noreferrer">
+        LinkedIn ↗
+      </a>
+    )}
+    <a href={callingCard.github} target="_blank" rel="noopener noreferrer">
+      GitHub ↗
+    </a>
+    <a href="/projects/">Projects ↗</a>
+    <a href="#message">Send a note ↓</a>
+  </div>
+</aside>

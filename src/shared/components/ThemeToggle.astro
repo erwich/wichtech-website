@@ -1,0 +1,42 @@
+<button
+  class="theme-toggle"
+  type="button"
+  aria-label="Switch color theme"
+  aria-pressed="false"
+  data-theme-toggle
+>
+  Theme ◐
+</button>
+<script>
+  function setupTheme() {
+    const button = document.querySelector<HTMLButtonElement>(
+      '[data-theme-toggle]',
+    );
+    if (!button) return;
+    const update = () => {
+      const dark = document.documentElement.dataset.theme === 'dark';
+      button.setAttribute('aria-pressed', String(dark));
+      button.setAttribute(
+        'aria-label',
+        `Switch to ${dark ? 'light' : 'dark'} theme`,
+      );
+    };
+    update();
+    button.onclick = () => {
+      const next =
+        document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+      document.documentElement.dataset.theme = next;
+      try {
+        localStorage.setItem('wich-theme', next);
+      } catch {
+        /* Storage is optional. */
+      }
+      update();
+    };
+  }
+  document.addEventListener('astro:page-load', setupTheme);
+  document.addEventListener('astro:before-swap', (event) => {
+    event.newDocument.documentElement.dataset.theme =
+      document.documentElement.dataset.theme;
+  });
+</script>

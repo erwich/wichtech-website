@@ -1,0 +1,148 @@
+#contact-form {
+  display: grid;
+  gap: 19px;
+  max-width: 550px;
+}
+
+#contact-form label {
+  display: grid;
+  gap: 8px;
+  font-size: 14px;
+}
+
+#contact-form input,
+#contact-form textarea {
+  width: 100%;
+  padding: 13px;
+  background: var(--panel);
+  color: var(--ink);
+  border: 1px solid var(--edge);
+  border-radius: 3px;
+}
+
+#contact-form textarea {
+  min-height: 160px;
+  resize: vertical;
+}
+
+#contact-form .form-note,
+#contact-status {
+  font-size: 13px;
+  margin: 0;
+}
+
+#contact-status[data-error] {
+  color: var(--error);
+}
+
+#contact-form .honeypot {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 48px;
+  align-items: center;
+}
+.calling-card {
+  border: 1px solid var(--edge);
+  border-top: 3px solid var(--accent);
+  border-radius: 16px;
+  padding: 28px;
+  background: linear-gradient(135deg, var(--panel), var(--surface));
+  scroll-margin-top: 24px;
+}
+.card-topline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  font: 9px/1.6 var(--mono);
+  letter-spacing: 1px;
+  color: var(--muted);
+}
+.card-monogram {
+  font: bold 26px var(--mono);
+  color: var(--ink);
+}
+.card-identity {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin: 32px 0 22px;
+}
+.card-identity img {
+  width: 96px;
+  height: 96px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid var(--edge);
+}
+.card-identity h2 {
+  font-size: 30px;
+  margin-bottom: 8px;
+}
+.card-identity p {
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0;
+}
+.card-links {
+  display: flex;
+  gap: 22px;
+  flex-wrap: wrap;
+  font-size: 14px;
+  color: var(--accent);
+}
+.card-links a {
+  padding: 4px 0;
+}
+.contact-message h2 {
+  margin-bottom: 10px;
+}
+.contact-message > p {
+  font-size: 14px;
+  margin-bottom: 26px;
+}
+.contact-page #contact-form {
+  max-width: none;
+}
+.contact-page #contact-form input,
+.contact-page #contact-form textarea {
+  border-radius: 8px;
+}
+@media (max-width: 850px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 38px;
+  }
+  .calling-card {
+    max-width: 520px;
+  }
+}
+@media (max-width: 400px) {
+  .calling-card {
+    padding: 20px;
+  }
+  .card-identity {
+    gap: 12px;
+  }
+  .card-identity img {
+    width: 76px;
+    height: 76px;
+  }
+  .card-identity h2 {
+    font-size: 26px;
+  }
+}
+
+@media (min-width: 851px) {
+  .calling-card {
+    transform: translateY(-48px);
+  }
+}

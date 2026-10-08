@@ -1,0 +1,63 @@
+---
+import './home.css';
+import Button from '../../shared/components/Button.astro';
+import SectionHeading from '../../shared/components/SectionHeading.astro';
+import ProjectGrid from '../projects/ProjectGrid.astro';
+import { getProjects } from '../projects/query';
+import Journal from '../writing/Journal.astro';
+import { getPublishedPosts } from '../writing/query';
+import Interests from '../about/Interests.astro';
+const projects = (await getProjects()).filter(
+  (project) => project.data.featured,
+);
+const posts = (await getPublishedPosts()).slice(0, 3);
+---
+
+<section class="hero">
+  <p class="eyebrow">Eric Wich / Code, curiosity, and a few side quests</p>
+  <h1>
+    Things I build.
+    <br />
+    Things I learn.
+    <br />
+    <em>Things I love.</em>
+  </h1>
+  <p class="hero-copy">
+    Software, games, good food, and ideas worth following. This is where I share
+    what I’m working on—and what catches my interest along the way.
+  </p>
+  <div class="actions">
+    <Button href="/projects/">Explore my projects ↗</Button>
+    <Button href="/writing/" secondary>
+      Read my notes
+    </Button>
+  </div>
+</section>
+<section>
+  <SectionHeading
+    title="Featured projects"
+    href="/projects/"
+    linkLabel="All projects"
+  />
+  <ProjectGrid projects={projects} />
+</section>
+<section class="journal-section">
+  <SectionHeading
+    title="From the journal"
+    href="/writing/"
+    linkLabel="All writing"
+  />
+  <div class="editorial-grid">
+    <Journal posts={posts} />
+    <Interests />
+  </div>
+</section>
+<section class="hello">
+  <div>
+    <h2>Have something in mind?</h2>
+    <p>A project, a shared interest, or a good question.</p>
+  </div>
+  <Button href="/contact/" secondary>
+    Let's talk ↗
+  </Button>
+</section>
