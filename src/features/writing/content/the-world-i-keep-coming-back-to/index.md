@@ -2,7 +2,7 @@
 title: "Building Revelation, and why I keep coming back to it"
 description: "How my recurring programming exercise became a shared world, an AI Dungeon Master, and a project I keep returning to."
 slug: the-world-i-keep-coming-back-to
-date: 2026-10-08
+date: 2026-10-02
 category: Building things
 draft: false
 ---
