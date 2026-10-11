@@ -145,6 +145,8 @@ What I like here is that I can ask for an experience in ordinary language. The A
 
 That’s what I mean by deterministic harnesses. The wording can vary, and a random destination can vary. The command’s rules and allowed effects are the predictable part. MCP provides the connection; the implementation behind each tool has to enforce those rules. A good prompt alone doesn’t do that work.
 
-It’s another piece of the lesson from the spoon. Spell out the powers, give them useful limits, and then let the AI get creative within that space. Sometimes the result is a new cookie. Sometimes it’s getting unceremoniously thrown across your own world.
+It’s another piece of the lesson from the spoon. Spell out the powers, give them useful limits, and then let the AI get creative within that space. Sometimes the result is a new cookie. Sometimes it’s getting unceremoniously thrown across your own world. But it’s never freestyle database surgery with a nice description attached.
+
+That’s the balance I’m after: room to play with the narration, choose from the available tools, and combine them into something interesting, while the code checks each call and enforces what it can actually do. The LLM supplies the variation; the harness supplies the rules. Getting those rules right is what makes room for the fun. I can enjoy being flung through a silver fissure without wondering what else just changed in the database.
 
 If that sounds like something you’d enjoy, take a look at [Triloka Eternal](https://trilokaeternal.com/). The game isn’t live yet, but you can create an account and join the mailing list for updates and access announcements. We’re taking our time with it, but I’d love for people to follow along.
