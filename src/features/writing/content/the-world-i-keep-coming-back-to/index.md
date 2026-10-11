@@ -49,14 +49,6 @@ That took work. We had to get much more deliberate about the APIs we exposed and
 
 For me, that was a big lesson in slowing down. I had to stop chasing whatever was shiniest for a minute and make responsible choices about how the system should work. Getting an impressive result once is exciting. Making the behavior predictable takes a different kind of effort.
 
-## Why I keep coming back
-
-Even with all that, I can really only go a couple of months before I get the itch to get back into it. It just brings me a lot of joy.
-
-There’s something special about being logged into a game with your friends while you’re all building that same world. You create a room, and suddenly it’s there. You can walk into it. You can look around and read this awesome description somebody wrote, and you’re experiencing the thing as you’re making it.
-
-That’s a hard feeling to replicate. It’s an immersive building experience, and every couple of months I get that hankering to dive back in.
-
 ## A peek at the tools behind it
 
 I mentioned the web editor earlier, but I want to actually show some of it, because I think this part is freaking cool. Revelation has grown into something people can sit down with and use to build a world together. Triloka Eternal is the world we’re building with it.
@@ -148,5 +140,19 @@ That’s what I mean by deterministic harnesses. The wording can vary, and a ran
 It’s another piece of the lesson from the spoon. Spell out the powers, give them useful limits, and then let the AI get creative within that space. Sometimes the result is a new cookie. Sometimes it’s getting unceremoniously thrown across your own world. But it’s never freestyle database surgery with a nice description attached.
 
 That’s the balance I’m after: room to play with the narration, choose from the available tools, and combine them into something interesting, while the code checks each call and enforces what it can actually do. The LLM supplies the variation; the harness supplies the rules. Getting those rules right is what makes room for the fun. I can enjoy being flung through a silver fissure without wondering what else just changed in the database.
+
+## Why I keep coming back
+
+Revelation has had plenty of stretches where it sits for a while. Life gets busy, other projects get interesting, and none of us is doing this full-time. But I can usually only go a couple of months before I start thinking, man, I’d really like to get back in there.
+
+A lot of that comes down to being able to experience what we’re building while we’re building it. Someone writes a room, connects an exit, and suddenly there’s somewhere new to go. You can walk in, look around, and read what they’ve put there. A few minutes ago, that place didn’t exist. Now you’re standing in it together.
+
+That still gets me. I love the programming side: the engine, the tools, figuring out how the pieces should work. But I also get to log in and enjoy the result. Sometimes that means exploring a temple somebody’s been working on. Sometimes it means buying a cookie because I want to see the whole ridiculous little system work from the other side.
+
+And doing that with friends makes it special. We each bring something to it, and the world gradually fills up with things we’ve made together. A description gives you an idea for an interaction; an interaction gives somebody else an idea for a quest. Then I’m back in the engine figuring out how to support it, because now I want to see it happen too.
+
+There’s no dramatic release schedule behind any of this. We circle back when we can. But every time I do, I remember why this became so much more than an exercise in learning a programming language.
+
+I wanted to build a MUD engine. Somewhere along the way, we started making a place I like spending time in.
 
 If that sounds like something you’d enjoy, take a look at [Triloka Eternal](https://trilokaeternal.com/). The game isn’t live yet, but you can create an account and join the mailing list for updates and access announcements. We’re taking our time with it, but I’d love for people to follow along.
