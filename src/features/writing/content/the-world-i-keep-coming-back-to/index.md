@@ -125,4 +125,26 @@ The engine also limits which properties those generated definitions can change. 
 
 That’s the sort of thing I’ve spent a lot of time on with Revelation. I want room for surprising, interesting results, and I want the people building the game to have useful controls over them. And apparently, sometimes working on that means spending an evening thinking very seriously about cookies.
 
+### A little dramatic transportation
+
+The same idea carries over to changing things in the running game. I’ve built MCP harnesses that let me make requests from an AI session and have it invoke specific game commands. MCP, short for Model Context Protocol, is how the session connects to those tools. The controls come from the code behind them: the operations I’ve exposed and the constraints I’ve put around what they can do.
+
+Here’s a recent example. I asked it to move Iosou to a random room, with narration for both the character being moved and anyone watching. Apparently, walking was too ordinary that day.
+
+![An AI conversation requesting that Iosou be moved to a random room with personal and third-person narration, followed by a completion report.](./mcp-movement-request.png)
+
+*A request in plain language, carried out through the game tools I’ve built.*
+
+And this is what arrived in the game. Something catches Iosou beneath the ribs and yanks him through a slit of silver light. The room changes, and an arrival message describes him landing on unfamiliar ground. The destination is still an unfinished room, which feels pretty appropriate for a world we’re building as we go.
+
+![The game client showing Iosou in the lounge, a sudden departure message, a different room with different exits, and narration describing his arrival.](./mcp-movement-gameplay.png)
+
+*The player’s side: departure, an actual change of room, and arrival.*
+
+What I like here is that I can ask for an experience in ordinary language. The AI can work out which exposed tools to use and write some suitably dramatic flavor text. The harness gives those requests a defined way to affect game state. Moving a character is an operation implemented in code, with boundaries that don’t depend on how persuasive the narration happens to be.
+
+That’s what I mean by deterministic harnesses. The wording can vary, and a random destination can vary. The command’s rules and allowed effects are the predictable part. MCP provides the connection; the implementation behind each tool has to enforce those rules. A good prompt alone doesn’t do that work.
+
+It’s another piece of the lesson from the spoon. Spell out the powers, give them useful limits, and then let the AI get creative within that space. Sometimes the result is a new cookie. Sometimes it’s getting unceremoniously thrown across your own world.
+
 If that sounds like something you’d enjoy, take a look at [Triloka Eternal](https://trilokaeternal.com/). The game isn’t live yet, but you can create an account and join the mailing list for updates and access announcements. We’re taking our time with it, but I’d love for people to follow along.
